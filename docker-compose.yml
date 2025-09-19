@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  telealert:
+    image: zadayak4/telealert_clone
+    # Construye la imagen a partir del Dockerfile en el directorio actual
+    build: .
+    # Le da un nombre reconocible al contenedor
+    container_name: telealert_clone
+    # Reinicia el contenedor automáticamente a menos que lo detengas manualmente
+    restart: unless-stopped
+    # Mapea archivos y carpetas locales al interior del contenedor (Volúmenes)
+    # Esto es la clave para la persistencia de datos
+    volumes:
+      # Mapea el config.ini local para que el contenedor pueda leerlo
+      - ./config.ini:/app/config.ini
+      # Mapea el archivo de sesión. Así no tendrás que iniciar sesión cada vez.
+      - ./telealert.session:/app/telealert.session
+      # Mapea la carpeta de datos del usuario
+      - ./data:/app/data
