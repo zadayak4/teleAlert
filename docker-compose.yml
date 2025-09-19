@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   telealert:
-    image: zadayak4/telealert_clone
+    image: zadayak4/telealert
     # Construye la imagen a partir del Dockerfile en el directorio actual
     build: .
     # Le da un nombre reconocible al contenedor
@@ -17,4 +17,5 @@ services:
       # Mapea el archivo de sesión. Así no tendrás que iniciar sesión cada vez.
       - ./telealert.session:/app/telealert.session
       # Mapea la carpeta de datos del usuario
+
       - ./data:/app/data
